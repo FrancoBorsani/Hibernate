@@ -4,8 +4,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public abstract class Cliente {
-	private long idCliente ;
-	private String nroCliente;
+	protected long idCliente ;
+	protected String nroCliente;
 	
 	
 	public Cliente(){} 
