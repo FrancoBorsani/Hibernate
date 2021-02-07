@@ -1,0 +1,128 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 32784 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:389), pid=14784, tid=0x0000000000000a88
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_281-b09) (build 1.8.0_281-b09)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.281-b09 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001ef19293800):  JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=2696, stack(0x000000c853b00000,0x000000c853c00000)]
+
+Stack: [0x000000c853b00000,0x000000c853c00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x32e5b9]
+V  [jvm.dll+0x275012]
+V  [jvm.dll+0x275cbd]
+V  [jvm.dll+0x26c6f5]
+V  [jvm.dll+0xd51fc]
+V  [jvm.dll+0xd59fc]
+V  [jvm.dll+0xd554d]
+V  [jvm.dll+0x4c5d1f]
+V  [jvm.dll+0x49da2e]
+V  [jvm.dll+0x49d693]
+V  [jvm.dll+0x49d4e3]
+V  [jvm.dll+0x49ec84]
+V  [jvm.dll+0x49e4ef]
+V  [jvm.dll+0x49e4b6]
+V  [jvm.dll+0x49e503]
+V  [jvm.dll+0x48df75]
+V  [jvm.dll+0x441d19]
+V  [jvm.dll+0x43f664]
+V  [jvm.dll+0x42a5e7]
+V  [jvm.dll+0xabe9b]
+V  [jvm.dll+0xaa4fb]
+V  [jvm.dll+0x23d6b2]
+V  [jvm.dll+0x291cbc]
+C  [ucrtbase.dll+0x214c2]
+C  [KERNEL32.DLL+0x17034]
+C  [ntdll.dll+0x4d0d1]
+
+
+Current CompileTask:
+C2:    396  341   !   4       sun.misc.URLClassPath$JarLoader::getResource (85 bytes)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x000001ef1aaaa800 JavaThread "Service Thread" daemon [_thread_blocked, id=9220, stack(0x000000c853e00000,0x000000c853f00000)]
+  0x000001ef1929e000 JavaThread "C1 CompilerThread3" daemon [_thread_blocked, id=11560, stack(0x000000c853d00000,0x000000c853e00000)]
+  0x000001ef192a0000 JavaThread "C2 CompilerThread2" daemon [_thread_blocked, id=15644, stack(0x000000c853c00000,0x000000c853d00000)]
+=>0x000001ef19293800 JavaThread "C2 CompilerThread1" daemon [_thread_in_native, id=2696, stack(0x000000c853b00000,0x000000c853c00000)]
+  0x000001ef1928e800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=12284, stack(0x000000c853a00000,0x000000c853b00000)]
+  0x000001ef1928b000 JavaThread "Attach Listener" daemon [_thread_blocked, id=5684, stack(0x000000c853900000,0x000000c853a00000)]
+  0x000001ef1928a000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=15988, stack(0x000000c853800000,0x000000c853900000)]
+  0x000001ef19261000 JavaThread "Finalizer" daemon [_thread_blocked, id=7848, stack(0x000000c853700000,0x000000c853800000)]
+  0x000001ef7ff8e800 JavaThread "Reference Handler" daemon [_thread_blocked, id=2168, stack(0x000000c853600000,0x000000c853700000)]
+  0x000001ef7d892000 JavaThread "main" [_thread_blocked, id=13292, stack(0x000000c852a00000,0x000000c852b00000)]
+
+Other Threads:
+  0x000001ef19237000 VMThread [stack: 0x000000c853500000,0x000000c853600000] [id=12092]
+  0x000001ef192ce000 WatcherThread [stack: 0x000000c853f00000,0x000000c854000000] [id=14500]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x000001ef7d88e190] Threads_lock - owner thread: 0x000001ef19237000
+[0x000001ef7d88f9a0] Heap_lock - owner thread: 0x000001ef7d892000
+
+heap address: 0x00000006c2800000, size: 4056 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x00000007c0000000
+
+Heap:
+ PSYoungGen      total 75776K, used 30708K [0x000000076b800000, 0x0000000770c80000, 0x00000007c0000000)
+  eden space 65024K, 47% used [0x000000076b800000,0x000000076d5fd360,0x000000076f780000)
+  from space 10752K, 0% used [0x0000000770200000,0x0000000770200000,0x0000000770c80000)
+  to   space 10752K, 0% used [0x000000076f780000,0x000000076f780000,0x0000000770200000)
+ ParOldGen       total 173568K, used 0K [0x00000006c2800000, 0x00000006cd180000, 0x000000076b800000)
+  object space 173568K, 0% used [0x00000006c2800000,0x00000006c2800000,0x00000006cd180000)
+ Metaspace       used 7111K, capacity 7260K, committed 7296K, reserved 1060864K
+  class space    used 860K, capacity 884K, committed 896K, reserved 1048576K
+
+Card table byte_map: [0x000001ef7f650000,0x000001ef7fe40000] byte_map_base: 0x000001ef7c03c000
+
+Marking Bits: (ParMarkBitMap*) 0x000000005a996ff0
+ Begin Bits: [0x000001ef0f550000, 0x000001ef134b0000)
+ End Bits:   [0x000001ef134b0000, 0x000001ef17410000)
+
+Polling page: 0x000001ef7dab0000
+
+CodeCache: size=245760Kb used=1984Kb max_used=1996Kb free=243775Kb
+ bounds [0x000001ef00000000, 0x000001ef00270000, 0x000001ef0f000000]
+ total_blobs=647 nmethods=373 adapters=187
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 0.294 Thread 0x000001ef1929e000  368       3       sun.misc.URLClassPath$JarLoader::findResource (18 bytes)
+Event: 0.294 Thread 0x000001ef1929e000 nmethod 368 0x000001ef001eaa50 code [0x000001ef001eabc0, 0x000001ef001eae60]
+Event: 0.294 Thread 0x000001ef1929e000  370   !   3       java.net.URLClassLoader::definePackageInternal (81 bytes)
+Event: 0.295 Thread 0x000001ef1929e000 nmethod 370 0x000001ef001ecd50 code [0x000001ef001ecf60, 0x000001ef001edac0]
+Event: 0.295 Thread 0x000001ef1929e000  371       3       java.net.URLClassLoader::getAndVerifyPackage (109 bytes)
+Event: 0.295 Thread 0x000001ef1929e000 nmethod 371 0x000001ef001edf90 code [0x000001ef001ee280, 0x000001ef001efa30]
+Event: 0.297 Thread 0x000001ef1928e800  372       4       java.lang.StringBuilder::append (8 bytes)
+Event: 0.297 Thread 0x000001ef1929e000  373       3       java.util.AbstractMap::<init> (5 bytes)
+Event: 0.297 Thread 0x000001ef1929e000 nmethod 373 0x000001ef001f0690 code [0x000001ef001f07e0, 0x000001ef001f0998]
+Event: 0.300 Thread 0x000001ef1928e800 nmethod 372 0x000001ef001f3ed0 code [0x000001ef001f4020, 0x000001ef001f44b8]
+
